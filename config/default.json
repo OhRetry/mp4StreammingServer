@@ -1,0 +1,9 @@
+{
+    "NetworkInterface":"Wi-Fi",
+    "getIPfromInterface":true,
+    "port":3000,
+    "https":true,
+    "root":"C:/",    
+    "users":[        
+    ]
+}

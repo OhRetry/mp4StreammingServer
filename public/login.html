@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, 
+  maximum-scale=1.0, minimum-scale=1.0">
+        <title>LOGIN</title>
+    </head>
+    <body>
+        <h1>LOGIN</h1>
+        <br>
+        
+        <form method="post" action="/auth">
+            <table>
+                <tr>
+                    <td><label>Enter your ID</label></td>
+                    <td><input type="text" name="id"></td>
+                </tr>
+                
+                <tr>
+                    <td><label>Enter your PASSWORD</label></td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+            </table>
+            <input type="submit" value="login">
+        </form>
+    </body>
+</html>

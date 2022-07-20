@@ -1,0 +1,24 @@
+<!-- 
+  not support mpeg-ts yet.
+  if create the single entity m3u8 file, user can't control time of video.
+  it can be possible by many way.
+
+  1.make(or find) ts player working at browser
+  2.or process time request at server by ffmpeg
+  and ...
+  
+  1 is best but I will update with possible way.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", user-scalable=yes, 
+        maximum-scale=1.0, minimum-scale=1.0>
+  </head>
+  <body>
+    <video width="auto" height="auto" autoplay controls>
+      <source src="<%= videoSource %>" type="video/mp4" />
+    </video>
+  </body>
+</html>

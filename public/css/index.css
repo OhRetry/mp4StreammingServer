@@ -1,0 +1,42 @@
+.idBox{
+    border : 1px solid black;
+    width : 200px;
+    height : 100px;
+    background-color:rgb(190, 123, 211);
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.loginBox{
+    border : 1px solid black;
+    width : 120px;
+    height : 100px;
+    background-color:lime;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.logoutButton{
+    width : 40px;
+    height : 20px;
+    float : left;
+}
+.functionBox{
+    border : 1px solid black;
+    width : 120px;
+    height : 120px;
+    margin-right: 20px;
+    float : left;
+}
+.functionBoxImage{
+    width: 120px;
+    height: 100px;
+}
+.horiCenter{
+    text-align: center;
+}
+.allCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

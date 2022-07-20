@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, 
+  maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/public/css/index.css">
+    <title>Private Explorer</title>
+</head>
+
+<body>
+    <h1> Private Explorer</h1>
+    <div>
+
+        <div style="margin-bottom: 40px;">
+            <div class="idBox">
+                id : <%=user.id%> <br>
+                    authority : <%=user.auth%>
+            </div>
+            <a href="/logout" class="logoutButton">
+                <button>Logout</button>
+            </a>
+        </div>
+
+
+        <div>
+            <a href="/root/">
+                <div class="functionBox">
+                    <img src='/public/img/icon/folder.png' class="functionBoxImage">
+                    <div class="horiCenter">Explorer</div>
+                </div>
+            </a>
+            <% if(user.auth=="Admin" ) { %>
+                <a href="/admin">
+                    <div class="functionBox">
+                        <img src='/public/img/icon/setting.png' class="functionBoxImage">
+                        <div class="horiCenter">Setting</div>
+                    </div>
+                </a>
+                <% } %>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

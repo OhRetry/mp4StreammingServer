@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0", user-scalable=yes, 
+        maximum-scale=1.0, minimum-scale=1.0>
+        <link rel="stylesheet" href="/public/css/explorer.css">
+        <script type="text/javascript" src="/public/js/explorer/sort.js"></script>
+    </head>
+    <body>  
+        <div id='contents'>  
+            <%      if(upper_base != '//'){     %>
+            <div id = 'upper' class='content-box'> 
+                <a href="<%=upper_base%>">
+                    <img src='/public/img/icon/folder.png' width='100' height='100'>
+                    <div class='content-title'>..</div>
+                </a>
+            </div>         
+            <%      }       %>
+            <%      for(var dirname of dir){        %>
+                <div class='content-box folder'> 
+                    <a href="<%=base + dirname + '/'%>">
+                        <img src='/public/img/icon/folder.png' width='100' height='100'>
+                        <div class='content-title'><%=dirname%></div>
+                    </a>
+                </div>   
+            <%      }       %>
+            <%      for(var filename of video){      %>
+                <div class='content-box file'>
+                    <a href='<%=base + filename%>'>
+                        <img src='/thumbnail<%=base+filename%>' width='100' height='100'>
+                        <div class='content-title'><%=filename%></div>
+                    </a>                    
+                </div>
+            <%   }  %>            
+            <%      for(var filename of image){      %>
+                <div class='content-box file'>
+                    <a href='<%=base + filename%>'>
+                        <img src='<%=base + filename%>' width='100' height='100'>
+                        <div class='content-title'><%=filename%></div>
+                    </a>                    
+                </div>
+            <%   }  %>            
+            <%      for(var filename in file){      %>
+                <div class='content-box file'>
+                    <a href='<%=base + filename%>'>
+                        <img src='/public/img/icon/icon<%=file[filename]%>.png' width='100' height='100'>
+                        <div class='content-title'><%=filename%></div>
+                    </a>                    
+                </div>
+            <%   }  %>            
+        </div>
+    </body>
+</html>
