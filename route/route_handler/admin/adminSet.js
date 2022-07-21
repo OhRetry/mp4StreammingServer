@@ -15,10 +15,9 @@ module.exports = function(req,res){
     //check if the system needs to be restarted
     var reboot = checkReBoot(targ);
 
-    console.log(targ);
     Setting.change(targ);
     Setting.save();
-    console.log(Setting);
+    
     if(reboot){
         res.end("Setting is changed. You have to restart server");
     }

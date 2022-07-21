@@ -1,5 +1,4 @@
-#cert, personal config
-/cert
+#personal config
 /config/Setting.json
 /config/Setting_backup
 /config/Setting_temp

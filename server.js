@@ -1,4 +1,6 @@
-//require
+/*=================================================================================================
+Require
+=================================================================================================*/
     const os = require('os')
     const express = require("express");
     const fs = require('fs');
@@ -10,11 +12,15 @@
     const expressSession = require('express-session');
     const Setting = require('./config/Setting.js');
     const thumbnail_Manager = require('./video_Process/thumbnail/thumbnail_Manager');
-//Initialize
+/*=================================================================================================
+initialize internal object
+=================================================================================================*/
 Setting.init();
 thumbnail_Manager.init(10000,false,"120x?",10);
 
-//Server start
+/*=================================================================================================
+set express app
+=================================================================================================*/
 var app = express();
 app.set('port', Setting.port);
 app.set('views', __dirname + '/views');
@@ -31,8 +37,9 @@ app.use(expressSession({
 }));
 
 
-
-//set router
+/*=================================================================================================
+set router
+=================================================================================================*/
 const router_loader = require('./route/route_loader');
 const router_info = require('./route/route_info');
 const loginCheck = require('./Security/User/loginCheck');
@@ -40,22 +47,24 @@ const safepath = require('./Security/safepath');
 var router;
 
 
-
+//login
 router = express.Router();
 router_loader(router,router_info.login);
 app.use('/', router);
 
+//index
 router = express.Router();
 router.use(loginCheck.user);
 router_loader(router,router_info.index);
 app.use('/',router);
 
+//explorer
 router = express.Router();
-//router.use(loginCheck.user);
 router.use(safepath);
 router_loader(router,router_info.explorer);
 app.use('/', router);
 
+//admin
 router = express.Router();
 router.use(loginCheck.admin);
 router_loader(router,router_info.admin);
@@ -63,10 +72,12 @@ app.use('/', router);
 
 
 
-
 console.log("\n==========================================\n");
 
-//create server
+/*=================================================================================================
+create server
+=================================================================================================*/
+//https
 if (Setting.https == true) {
     try{
         var server = https.createServer({
@@ -87,12 +98,15 @@ if (Setting.https == true) {
         Setting.https = false;
     }
 }
+//http
 if(Setting.https == false) {
     var server = http.createServer(app);
 }
 
 
-//make server listen
+/*=================================================================================================
+make server listen
+=================================================================================================*/
 let IsSecure = Setting.https ? "s" : "";
 function getServerAddress(IsSecure,ip,port){
     return "http" + IsSecure + "://" + ip + ':' + port;
@@ -101,25 +115,28 @@ function getServerAddress(IsSecure,ip,port){
 server = server.listen(app.get('port'));
 server.on('listening',function(){
     var addr = getServerAddress(IsSecure,Setting.ip,Setting.port);
+
     console.log('\x1b[44m');
     console.log("server started");
     console.log("server address  =>  " + addr);
     console.log('\x1b[0m');
-    //if os is window, execute browser with cmd
-    var exec = require('child_process').exec;
-    const exp = require("constants");
 
-    exec("start /max " + addr, function (err, stdout, stderr) {
-        //error or os is not window
-        if (err) {  
-            //console.log('cannot open browser with cmd');
-        }
-    });
+    //if os is window, execute browser with cmd
+    if(os.type().match("[wW]indows") != null){
+        var exec = require('child_process').exec;        
+
+        exec("start /max " + addr, function (err, stdout, stderr) {            
+            if (err) {  
+                console.log('cannot open browser with cmd');
+            }
+        });
+    }
 })
 server.on('error',function(e){
+    //port is already in use
     if(e.code == "EADDRINUSE"){
         console.log('\x1b[31m');
-        console.log('Someone is already using port ' + Setting.port);
+        console.log('Other program is already using port ' + Setting.port);
         console.log('port changed to ' + (Setting.port + 1));
         console.log('\x1b[0m');
         Setting.port += 1;

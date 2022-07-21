@@ -1,3 +1,8 @@
+developing
+1. branch main, admin/adminSet.js
+    1.validate format of new Setting json file
+    2.check if the system should reboot
+
 toDo(problem)
 1.can't handle file/directory witch name starts with '#' or '.#'
 
@@ -13,7 +18,3 @@ toDo(new feature)
 toDo(refactoring)
 1.seperate controller and service code
 
-developing
-1. branch main, admin/adminSet.js
-    1.validate new Setting json file from request.body
-    2.
