@@ -1,3 +1,9 @@
+#cert, personal config
+/cert
+/config/Setting.json
+/config/Setting_backup
+/config/Setting_temp
+
 #simple test file
 /test.js
 /test2.js

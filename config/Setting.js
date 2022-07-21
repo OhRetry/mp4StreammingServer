@@ -52,7 +52,7 @@ function change(json) {
 /*
 To prevent simultaneous access, this function is performed synchronously.
 To protect Setting file(from like crash), write to temp file and rename it to Setting.json
-1.write setting json data to Setting_temp
+1.write new setting json data to Setting_temp
 2.rename Setting.json to Setting_backup.json
 3.rename Setting_temp to Setting.json
 4.delete Setting_backup.json

@@ -40,9 +40,6 @@ function checkFormat(targ){
 }
 function checkReBoot(targ){
     var reboot = false;
-    targ.getIPfromInterface = targ.getIPfromInterface == "true" ? true : false;
-    targ.port = parseInt(targ.port);
-    targ.https = targ.https == "true" ? true : false;
 
     
     if(Setting.getIPfromInterface != targ.getIPfromInterface){
