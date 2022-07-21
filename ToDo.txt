@@ -1,10 +1,19 @@
-problem
-1.can't process file/directory witch name is starts with '#' or '.#'
+toDo(problem)
+1.can't handle file/directory witch name starts with '#' or '.#'
 
-toDo
+toDo(new feature)
 1.support video streaming with various extentions in addition to mp4
 2.change UI to use frontend framework/library
 3.support file uploading
 4.show file information when right click the file in browser
 5.show video preview when hover the video file in browser
-6.downsize image when 
+6.downsize thumbnail of image file
+7.add function at admin page to make new certificate for https using OPENSSL
+
+toDo(refactoring)
+1.seperate controller and service code
+
+developing
+1. branch main, admin/adminSet.js
+    1.validate new Setting json file from request.body
+    2.
