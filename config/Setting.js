@@ -10,33 +10,41 @@ function init() {
 
     /*
         1. try to get ip from NetworkInterface
-        2. if unavailable, use specific ip from Setting.json
-        3. if 1,2 fail, set loopback to IP
+        2. if unavailable, set loopback to IP        
     */
     
-    if (setting.getIPfromInterface == true) {
-        setting.ip = undefined;
-        if (setting.NetworkInterface != undefined) {
-            setting.ip = Utils_network.getIPAddress(setting.NetworkInterface);
-        }
+    setting.ip = undefined;
+    if (setting.NetworkInterface != undefined) {
+        setting.ip = Utils_network.getIPAddress(setting.NetworkInterface);
     }
+
     
-    if (setting.ip == undefined || setting.ip == '') {
+    if (setting.ip == undefined) {
         console.log("\n");
         console.log('\x1b[31m');
-        console.log("unavailable network interface and no preset ip at Setting")
-        console.log("set 127.0.0.1(loopback) to IP. its only available on your compter and other computer can't access to this server.")
+        console.log("Error => unavailable network interface \"" + setting.NetworkInterface + "\"");
+        console.log("set 127.0.0.1(loopback) to IP. This address is only available on your compter and other computer can't access with this address.");
+        console.log("If this computer is in private network like Wi-Fi, other computer can access with private ip address");
+        console.log("You can find your private ip address by ipconfig command");
         console.log('\x1b[0m');
         setting.ip = "127.0.0.1";
     }
     
-    if(setting.port == null){
+    if(typeof(setting.port) != "number"){
         console.log("\n");
         console.log('\x1b[31m');
-        console.log("Error => port is null");
-        console.log("set port 3000");
+        console.log("Error => port is not number");
+        console.log("set port to 3000");
         console.log('\x1b[0m');
         setting.port = 3000;
+    }
+        
+    if(!(fs.existsSync(setting.root) && fs.statSync(setting.root).isDirectory())){        
+        console.log("\n");
+        console.log('\x1b[31m');
+        console.log("Error => root(" + setting.root + ") is not exists or not directory");
+        console.log("Explorer will not work properly. Check Setting's root folder");
+        console.log('\x1b[0m');
     }
     
 }
