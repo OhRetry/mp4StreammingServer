@@ -1,9 +1,9 @@
 # mp4StreammingServer
 This is a web file server for your computer. You can explore your computer's file system using other device's web browser.   
 For example, If you run this program at your computer A, you can access A's file using mobile device B or other computer C.   
-It is only possible when B,C can access A throught network by router(Wi-Fi,LAN) or public ip or ect.   
+It is only possible when B,C can access A through network by router(Wi-Fi,LAN) or public ip or etc.   
 <br/>
-This explorer provides video/image's thumbnail so it will helpful when you explore a lot of video/image.  
+This explorer provides video/image's thumbnail so it will be helpful when you explore a lot of video/image.  
 And you can play/watch Video(H264),Audio(mp3,AAC..),Image(jpg,png,..) and Document(text,pdf..) files. 
 
 ---------
@@ -11,8 +11,8 @@ And you can play/watch Video(H264),Audio(mp3,AAC..),Image(jpg,png,..) and Docume
 # how to use
 
 ## you need nodejs and ffmpeg to run this program  
-This program run on nodejs so you must install nodejs to use this program.  
-you can explore filesystem and watch contents without ffmpeg but explorer will not privide thumbnail of video.
+This program runs on nodejs so you must install nodejs to use this program.  
+You can explore the filesystem and watch the contents without ffmpeg, but the explorer will not privide thumbnail of the video.
 
 ## install nodejs
 https://nodejs.org/ko/download/  
@@ -29,7 +29,7 @@ https://github.com/OhRetry/mp4StreammingServer/archive/refs/heads/main.zip
 OR  
 https://github.com/OhRetry/mp4StreammingServer -> code -> download Zip  
 
-Download program's zip file from the links above and unzip them.  
+Download the program's zip file from the links above and unzip them.  
 
 If you unzipped downloaded folder to C:\Users\administrator\Desktop\mp4StreammingServer  
 Open terminal and type below command
@@ -40,7 +40,7 @@ node install
 
 
 ## run program
-If you unzipped downloaded folder to C:\Users\administrator\Desktop\mp4StreammingServer
+If you have unzipped downloaded folder to C:\Users\administrator\Desktop\mp4StreammingServer
 You can run the program by below command
 ```
 cd "C:\Users\administrator\Desktop\mp4StreammingServer"
@@ -60,15 +60,16 @@ After running the program, you can see a screen like above
 <br/>
 Type server's address to your browser and you can see the home(index) page.
 <br/>
-id is your account's id.  
+<br/>
+id is your account's id.
 <br/>
 authority is your account's privileges.   
 <br/>
 
-There is no registered users(account) in Default Setting.  
-So server dose not login check and you have administrator privileges.  
+There are no registered users(account) in Default Setting.  
+Therefore, the server does not login check and you have administrator privileges.  
 
-Now you can explore your filesystem. Click explorer Icon.  
+Now, you can explore your filesystem. Click explorer Icon.  
 <br/>
 If you click Setting Icon, you can go to Administrator page. This Icon is only available when you have admin authority.
 <br/>
@@ -119,15 +120,21 @@ This feature is for people who use public router or public IP and don't want to 
 <br/>
 <br/>
 If you are using your Wi-Fi with other people, router's administrator can see your packet information.  
-for example if you access http://192.168.219.108:3000/root/movie/example1.mp4 , administrator can know that you accessed 192.168.219.108:3000/root/movie/example.mp4 and even can know movies's contents.  
+For example if you access http://192.168.219.108:3000/root/movie/example1.mp4 , administrator can know that you accessed 192.168.219.108:3000/root/movie/example.mp4 and even can know the movies's contents.  
 <br/>
-If you want to hide packet information In this case, you can use https.  
-With https, packet is encrypted and administrator can only know IP aaddress 192.168.219.108:3000 that you accessed.
-
+If you want to hide packet information In this case, you can use https.
+<br/>
+With https, packet is encrypted and administrator can only know IP address 192.168.219.108:3000 that you accessed.
+<br/>
+<br/>
 You need cert.pem and key.pem file in cert folder to apply https.
-Default cert.pem and key.pem is in cert folder so you can use https. But you need to make your own cert.pem, key.pem if you concern security.  
-You can make cert.pem and key.pem with openssl.
-
+<br/>
+Default cert.pem and key.pem are in cert folder so you can use https. But you need to make your own cert.pem, key.pem if you concern security.
+<br/>
+You can make cert.pem and key.pem with openssl. If you're interested, search openssl.
+<br/>
+<br/>
+Default is false.
 ## network interface
 Using the network device name specified here, the server searches for the ip address and tells you the url that users on the same network can access.
 <br/>
