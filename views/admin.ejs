@@ -12,27 +12,10 @@
         <br>
 
         <div id="setForm">
-            <h3>NetworkInterface</h3>
-            <input type="text" name="NetworkInterface" value="<%=Setting.NetworkInterface%>">
+            <h3>root    (type directory path)</h3>
             <br>
-            <br>
-
-            <h3>get IP from NetworkInterface?   (type true or false)</h3>
-            <br>
-            <input type="text" name="getIPfromInterface" value="<%=Setting.getIPfromInterface%>">
-            ( If true, system automatically gets IP from Network Interface like Wi-Fi)
-            <br>
-            <br>
-
-            <h3>IP  (type ip address)</h3>
-            <br>
-            <input type="text" name="ip" value="<%=Setting.ip%>">
-            (if you want to use this IP, set false to get IP from NetworkInterface)
-            <br>
-            <br>
-
-            <h3>use https?  (type true or false)</h3>
-            <input type="text" name="https" value="<%=Setting.https%>">
+            <input type="text" name="root" value="<%=Setting.root%>">
+            (highest directory that user can explorer)
             <br>
             <br>
 
@@ -41,13 +24,16 @@
             <br>
             <br>
 
-            <h3>root    (type directory path)</h3>
-            <br>
-            <input type="text" name="root" value="<%=Setting.root%>">
-            (highest directory that user can explorer)
+            <h3>use https?  (type true or false)</h3>
+            <input type="text" name="https" value="<%=Setting.https%>">
             <br>
             <br>
 
+            <h3>NetworkInterface</h3>
+            <input type="text" name="NetworkInterface" value="<%=Setting.NetworkInterface%>">
+            <br>
+            <br>            
+        
             <h3>users   (type string to ID, string to Password, true or false to Admin)</h3>
             -----If there is No User, System will skip login check--
             <br>

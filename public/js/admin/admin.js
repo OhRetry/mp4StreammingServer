@@ -14,12 +14,10 @@ parseVal['int'] = _parseInt;
 
 
 const singleVal = {
-    "NetworkInterface":"str",
-    "getIPfromInterface":"bool",
-    "ip":"str",
+    "root":"str",
     "https":"bool",
     "port":"int",
-    "root":"str"
+    "NetworkInterface":"str"
 }
 
 /*
