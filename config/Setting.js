@@ -41,8 +41,18 @@ function init() {
     
 }
 
-//change setting and save it to Setting.json file and apply to exports of module
+/*
+Change current Setting.
+*/
 function change(json) {
+    /*
+    Changed Setting should be applied to current runtime 
+    and current runtime is referencing object created in init() function.
+
+    So if we write code like 
+    setting = json
+    it will not be applied to current runtime    
+    */
     setting_data = json;
     for (var attr in json) {
         setting[attr] = json[attr];
@@ -50,12 +60,14 @@ function change(json) {
 }
 
 /*
+Save current Setting to Setting.json
+
 To prevent simultaneous access, this function is performed synchronously.
 To protect Setting file(from like crash), write to temp file and rename it to Setting.json
 1.write new setting json data to Setting_temp
-2.rename Setting.json to Setting_backup.json
+2.rename Setting.json to Setting_backup.json(if Setting.json is existing)
 3.rename Setting_temp to Setting.json
-4.delete Setting_backup.json
+4.delete Setting_backup.json(if Setting_backup.json is existing)
 */
 function save(){
     var data = JSON.stringify(setting_data);
@@ -64,13 +76,23 @@ function save(){
     var path_temp = path.resolve(__dirname, 'Setting_temp');
     var path_backup = path.resolve(__dirname, 'Setting_backup');
 
+    //1
     fs.writeFileSync(path_temp, data);
-    fs.renameSync(path_Setting, path_backup);
+    //2
+    if(fs.existsSync(path_Setting))
+        fs.renameSync(path_Setting, path_backup);
+
+    //3
     fs.renameSync(path_temp, path_Setting);
-    fs.unlinkSync(path_backup);
+    //4
+    if(fs.existsSync(path_backup))
+        fs.unlinkSync(path_backup);
 }
 
-//reset Setting to default
+/*
+reset Setting to default
+
+*/
 function reset(){
     json = fs.readFileSync(path.resolve(__dirname, 'default.json'), 'utf8');
     json = JSON.parse(json);
@@ -86,25 +108,27 @@ function reset(){
 
 
 
-var setting = fs.readFileSync(path.resolve(__dirname, 'Setting.json'), 'utf8');
 
 
+var setting = undefined;
 try{
+    setting = fs.readFileSync(path.resolve(__dirname, 'Setting.json'), 'utf8');
+    //setting_data is pure json object except functions
     setting_data = JSON.parse(setting);
     setting = JSON.parse(setting);
 }
 catch(err){
-    setting = undefined;
+    if(typeof setting != 'object'){
+        console.log("\n");
+        console.log('\x1b[31m');
+        console.log("fatal error on Setting.json file.");
+        console.log("Reset Setting.json");
+        console.log('\x1b[0m');
+        setting = {};
+        reset();
+    }    
 }
-if(typeof setting != 'object'){
-    console.log("\n");
-    console.log('\x1b[31m');
-    console.log("fatal error on Setting.json file.");
-    console.log("Reset Setting.json");
-    console.log('\x1b[0m');
-    setting = {};
-    reset();
-}
+
 
 setting.init = init;
 setting.change = change;

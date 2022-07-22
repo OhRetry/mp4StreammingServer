@@ -1,4 +1,5 @@
 #personal config
+/config/MySetting.json
 /config/Setting.json
 /config/Setting_backup
 /config/Setting_temp
