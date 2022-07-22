@@ -104,9 +104,9 @@ function addUser(){
     new_user.appendChild(ipt_admin);
 
     var ipt_delete = document.createElement('input');
-    ipt_admin.setAttribute('type','button');
-    ipt_admin.setAttribute('value','Delete');
-    ipt_admin.setAttribute('onclick',"deleteUser(this)");
+    ipt_delete.setAttribute('type','button');
+    ipt_delete.setAttribute('value','Delete');
+    ipt_delete.setAttribute('onclick',"deleteUser(this)");
     new_user.appendChild(ipt_delete);
 
     new_user.appendChild(document.createElement('br'));
